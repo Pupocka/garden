@@ -1,0 +1,17 @@
+{% load static %}
+{% block content %}
+  <h1>Список растений</h1>
+  <ul>
+    {% for plant in plant_list %}
+      <li>
+        <span>{{ plant.title }}</span>
+        <span>Категория: {{ plant.category.title }}</span>
+      {% if plant.category.image %}
+        <img src="{{ plant.category.image.url }}" alt="{{ plant.category.title }}">
+      {% endif %}
+      </li>
+    {% empty %}
+      <li>Нет растений.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
